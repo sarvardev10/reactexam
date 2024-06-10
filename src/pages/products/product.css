@@ -92,3 +92,24 @@
   justify-content: center;
   margin-top: 20px;
 }
+.return-to-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.return-to-pagination button {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.return-to-pagination button:hover {
+  background-color: #007bff;
+  color: white;
+}

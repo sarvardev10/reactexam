@@ -59,6 +59,10 @@ const Products = () => {
     setCurrentPage(1);
   };
 
+  const returnToPagination = () => {
+    setShowAll(false);
+  };
+
   return (
     <div>
       <div className="container">
@@ -109,9 +113,13 @@ const Products = () => {
           />
         </div>
       )}
-      {!showAll && (
+      {!showAll ? (
         <div className="show-all">
           <button onClick={showAllProducts}>Show All</button>
+        </div>
+      ) : (
+        <div className="return-to-pagination">
+          <button onClick={returnToPagination}>Return to Pagination</button>
         </div>
       )}
     </div>
