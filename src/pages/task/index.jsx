@@ -61,7 +61,7 @@ const Card = ({ title, cards, setCards }) => {
   };
 
   return (
-    <div style={{ width: "300px", margin: "10px" }}>
+    <div style={{ width: "100%", maxWidth: "300px", margin: "10px" }}>
       <h3 style={{ textAlign: "center" }}>{title}</h3>
       <div>
         {cards
@@ -70,7 +70,12 @@ const Card = ({ title, cards, setCards }) => {
             <MuiCard
               key={card.id}
               variant="outlined"
-              style={{ marginBottom: "10px", backgroundColor: "#f0f0f0" }}
+              style={{
+                marginBottom: "10px",
+                backgroundColor: "#f0f0f0",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                borderRadius: "8px",
+              }}
             >
               <CardContent>
                 <Typography variant="h6" component="div" gutterBottom>
@@ -107,6 +112,7 @@ const Card = ({ title, cards, setCards }) => {
         onClick={() => {
           setOpenModal(true);
           setEditMode(false);
+          setSelectedStatus(title.toLowerCase());
         }}
         variant="contained"
         startIcon={<AddIcon />}
@@ -128,6 +134,8 @@ const Card = ({ title, cards, setCards }) => {
             backgroundColor: "white",
             padding: "20px",
             minWidth: "300px",
+            borderRadius: "8px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
           }}
         >
           <h2>{editMode ? "Edit Card" : "Add New Card"}</h2>
@@ -177,9 +185,11 @@ const App = () => {
   const [cards, setCards] = useState([]);
 
   return (
-    <div style={{ padding: "20px", display: "flex", justifyContent: "center" }}>
-      <h1>Task Board</h1>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div style={{ padding: "20px" }}>
+      <h1 style={{ textAlign: "center" }}>Task Board</h1>
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
         {["Open", "Pending", "In Progress", "Complete"].map((title, index) => (
           <Card key={index} title={title} cards={cards} setCards={setCards} />
         ))}
